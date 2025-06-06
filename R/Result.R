@@ -1,6 +1,8 @@
 
 # Result Class ------------------------------------------------------------
 
+#' The abstract parent class of the `Success` and `Failure` classes.
+#'
 #' @export
 Result <- S7::new_class(
   "Result",
