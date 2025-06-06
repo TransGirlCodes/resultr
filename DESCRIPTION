@@ -21,6 +21,7 @@ Config/testthat/edition: 3
 Collate: 
     'S3_classes.R'
     'Generics.R'
+    'Option.R'
     'Result.R'
     'panic.R'
 URL: https://transgirlcodes.github.io/resultr/
