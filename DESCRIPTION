@@ -24,4 +24,5 @@ Collate:
     'Option.R'
     'Result.R'
     'panic.R'
+    'resultr-package.R'
 URL: https://transgirlcodes.github.io/resultr/
