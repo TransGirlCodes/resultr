@@ -167,8 +167,6 @@ S7::method(
   x@value |> fn()
 }
 
-S7::method(and_then, list(Failure, S7::class_any)) <- function(x, fn) {
- x
-}
+S7::method(and_then, list(Failure, S7::class_any)) <- function(x, fn) { x }
 
 

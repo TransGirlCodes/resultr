@@ -60,6 +60,9 @@ S7::method(result, S7::class_formula) <- function(fn, detect_warning = TRUE, fai
 
 #' @include S3_classes.R
 S7::method(result, class_result_wrapped_function) <- function(fn, detect_warning = TRUE, fail_on_warning = TRUE) {
-  warning("Already wrapped")
+  rlang::warn(
+    message = "resultr: Attempting to wrap a Result wrapped function that is already wrapped",
+    class = "resultr::result_function_already_wrapped_warning"
+  )
   fn
 }
