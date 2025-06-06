@@ -2,10 +2,11 @@
 % Please edit documentation in R/Result.R
 \name{Result}
 \alias{Result}
-\title{The abstract parent class of the \code{Success} and \code{Failure} classes.}
+\title{The abstract parent class of the \code{Success} and \code{Failure} classes}
 \usage{
 Result()
 }
 \description{
-The abstract parent class of the \code{Success} and \code{Failure} classes.
+As an \code{S7} abstract class. This can't actually be constructed, but can be used
+for the purposes of dispatch.
 }
