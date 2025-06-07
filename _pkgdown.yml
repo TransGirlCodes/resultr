@@ -3,8 +3,18 @@ template:
   bootstrap: 5
   light-switch: true
 reference:
+- title: Result classes
+  desc: The S7 classes defined by this package
+  contents:
+    - Result
+    - Success
+    - Failure
+- title: Option classes
+  desc: The S7 classes implementing "optional" values
+  contents:
+    - Option
 - title: Unwrapping values
-  desc: Functions for unwrapping the values contained in `Result` or `Option` objects.
+  desc: Functions for unwrapping the values contained in `Result` or `Option` objects
   contents:
     - unwrap
     #- unwrap_fail
