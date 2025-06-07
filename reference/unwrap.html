@@ -69,8 +69,21 @@ specifically want to crash your R program or throw an error condition.</p>
     </div>
 
     <div class="section level2">
+    <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
+
+
+<dl><dt id="arg-x">x<a class="anchor" aria-label="anchor" href="#arg-x"></a></dt>
+<dd><p>The object to unwrap.</p></dd>
+
+</dl></div>
+    <div class="section level2">
+    <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
+    <p>The value wrapped by <code>x</code> if a condition was not thrown as result of a <code>Failure</code> or <code>Nothing</code> value.</p>
+    </div>
+    <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><code><a href="unwrap_or_default.html">unwrap_or_default()</a></code> <code><a href="unwrap_option.html">unwrap_option()</a></code> <code>unwrap_or_else()</code></p></div>
+    <div class="dont-index"><p>Prefer <code><a href="unwrap_or_default.html">unwrap_or_default()</a></code> or <code>unwrap_or_else()</code> to explicitly handle the unhappy path.
+Alternatively, use <code><a href="unwrap_option.html">unwrap_option()</a></code> to change a <code>Success</code> to a <code>Some</code> and a <code>Failure</code> to a <code>Nothing</code>.</p></div>
     </div>
 
     <div class="section level2">
