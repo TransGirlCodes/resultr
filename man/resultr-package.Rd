@@ -16,7 +16,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Sabrina Ward \email{me@trans-girl.codes}
+\strong{Maintainer}: Sabrina Ward \email{me@trans-girl.codes} [copyright holder]
 
 }
 \keyword{internal}

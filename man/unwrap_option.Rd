@@ -19,6 +19,3 @@ This is useful for converting a \code{Result} to an \code{Option} i.e. to go fro
 the possibility of an answer or details of a failure, to the possibility of
 an answer or nothing.
 }
-\seealso{
-\code{\link[=unwrap]{unwrap()}} \code{\link[=unwrap_or_default]{unwrap_or_default()}} \code{\link[=unwrap_or_else]{unwrap_or_else()}}
-}

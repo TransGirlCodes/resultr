@@ -6,6 +6,12 @@
 \usage{
 unwrap(x, ...)
 }
+\arguments{
+\item{x}{The object to unwrap.}
+}
+\value{
+The value wrapped by \code{x} if a condition was not thrown as result of a \code{Failure} or \code{Nothing} value.
+}
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 
@@ -29,5 +35,6 @@ Failure("Ooopsy") |> unwrap()
 
 }
 \seealso{
-\code{\link[=unwrap_or_default]{unwrap_or_default()}} \code{\link[=unwrap_option]{unwrap_option()}} \code{\link[=unwrap_or_else]{unwrap_or_else()}}
+Prefer \code{\link[=unwrap_or_default]{unwrap_or_default()}} or \code{\link[=unwrap_or_else]{unwrap_or_else()}} to explicitly handle the unhappy path.
+Alternatively, use \code{\link[=unwrap_option]{unwrap_option()}} to change a \code{Success} to a \code{Some} and a \code{Failure} to a \code{Nothing}.
 }

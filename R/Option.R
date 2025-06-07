@@ -35,3 +35,23 @@ Nothing <- S7::new_class(
   "Nothing",
   parent = Option
 )
+
+S7::method(expect, list(Some, S7::class_character)) <- function(x, msg) { x@value }
+
+S7::method(expect, list(Nothing, S7::class_character)) <- function(x, msg) {
+  panic(
+    message = c("An expect has been violated", msg),
+    fail_value = x,
+    class = "expect_panic"
+  )
+}
+
+S7::method(unwrap, Some) <- function(x) { x@value }
+
+S7::method(unwrap, Nothing) <- function(x) {
+  panic(
+    "called `unwrap()` on a `Nothing` value",
+    fail_value = x,
+    class = "unwrap_panic"
+  )
+}
