@@ -37,9 +37,9 @@
     </div>
 
     <div class="section level2">
-      <h2 id="all-functions">All functions<a class="anchor" aria-label="anchor" href="#all-functions"></a></h2>
+      <h2 id="result-classes">Result classes<a class="anchor" aria-label="anchor" href="#result-classes"></a></h2>
 
-
+      <div class="section-desc"><p>The S7 classes defined by this package</p></div>
 
 
     </div><div class="section level2">
@@ -48,18 +48,6 @@
 
 
       <dl><dt>
-
-          <code><a href="Failure.html">Failure()</a></code>
-          <span class="badge lifecycle lifecycle-stable">stable</span>
-        </dt>
-        <dd>A class for representing a failed or stopped computation</dd>
-      </dl><dl><dt>
-
-          <code><a href="Option.html">Option()</a></code>
-
-        </dt>
-        <dd>The abstract parent class of the <code>Some</code> and <code>Nothing</code> classes</dd>
-      </dl><dl><dt>
 
           <code><a href="Result.html">Result()</a></code>
           <span class="badge lifecycle lifecycle-stable">stable</span>
@@ -73,18 +61,59 @@
         <dd>A class for representing the value of a successful computation</dd>
       </dl><dl><dt>
 
-          <code><a href="unwrap.html">unwrap()</a></code>
+          <code><a href="Failure.html">Failure()</a></code>
+          <span class="badge lifecycle lifecycle-stable">stable</span>
+        </dt>
+        <dd>A class for representing a failed or stopped computation</dd>
+      </dl></div><div class="section level2">
+      <h2 id="option-classes">Option classes<a class="anchor" aria-label="anchor" href="#option-classes"></a></h2>
 
+      <div class="section-desc"><p>The S7 classes implementing “optional” values</p></div>
+
+
+    </div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="Option.html">Option()</a></code>
+
+        </dt>
+        <dd>The abstract parent class of the <code>Some</code> and <code>Nothing</code> classes</dd>
+      </dl></div><div class="section level2">
+      <h2 id="unwrapping-values">Unwrapping values<a class="anchor" aria-label="anchor" href="#unwrapping-values"></a></h2>
+
+      <div class="section-desc"><p>Functions for unwrapping the values contained in <code>Result</code> or <code>Option</code> objects</p></div>
+
+
+    </div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="unwrap.html">unwrap()</a></code>
+          <span class="badge lifecycle lifecycle-stable">stable</span>
         </dt>
         <dd>Get the wrapped value from a <code>Result</code> or <code>Option</code> object</dd>
       </dl><dl><dt>
 
           <code><a href="unwrap_or_default.html">unwrap_or_default()</a></code>
-
+          <span class="badge lifecycle lifecycle-stable">stable</span>
         </dt>
         <dd>Get the wrapped value from a <code>Result</code> or <code>Option</code> object</dd>
+      </dl><dl><dt>
+
+          <code><a href="unwrap_option.html">unwrap_option()</a></code>
+          <span class="badge lifecycle lifecycle-stable">stable</span>
+        </dt>
+        <dd>Get the wrapped value from a <code>Result</code>, wrapped in an <code>Option</code> object</dd>
       </dl></div>
-  </main></div>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+    </nav></aside></div>
 
 
     <footer><div class="pkgdown-footer-left">
