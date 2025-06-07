@@ -130,16 +130,21 @@ unwrap_fail <- S7::new_generic("unwrap_fail", "x")
 #' `r lifecycle::badge('stable')`
 #'
 #' If the provided object is a `Failure` (in the case of a `Result` input) or
-#' `Nothing` (in the case of an `Option` input), then the function will 'panic'
-#' and throw an error of class `unwrap_fail_panic`.
+#' `Nothing` (in the case of an `Option` input), then the function will return
+#' the provided default value instead.
 #'
-#' For this reason, use of this function is not generally advised unless you
-#' specifically want to crash your R program or throw an error condition.
+#' @param x The object to unwrap.
+#' @param default The default value to return in the event that `x` is a `Failure`.
 #'
-#' Instead you are encouraged to handle the "unhappy path" yourself using
-#' `unwrap_or_default`, `unwrap_or_else` or `unwrap_option`.
+#' @returns The value wrapped by a `Success` or `default` in the case of a `Failure`.
 #'
-#' @seealso [unwrap()] [unwrap_option()] [unwrap_or_else()]
+#' @examples
+#' Success(10) |> unwrap_or_default(200)
+#' Failure("OMG I failed") |> unwrap_or_default(200)
+#' Some(50) |> unwrap_or_default(200)
+#' Nothing() |> unwrap_or_default(200)
+#'
+#' @seealso [unwrap_or_else()]
 #'
 #' @export
 unwrap_or_default <- S7::new_generic("unwrap_or_default", c("x", "default"))
