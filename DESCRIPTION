@@ -2,7 +2,7 @@ Package: resultr
 Title: Result and Option S7 Classes, inspired by Rust
 Version: 0.0.0.9000
 Authors@R: 
-    person("Sabrina", "Ward", , "me@trans-girl.codes", role = c("aut", "cre"))
+    person("Sabrina", "Ward", , "me@trans-girl.codes", role = c("aut", "cre", "cph"))
 Description: S7 classes for 'Result' and 'Option' values that allow you to
   handle errors or missing values in a manner similar to that of recent systems
   programming languages like 'Rust'. Easily wrap existing functions into ones
