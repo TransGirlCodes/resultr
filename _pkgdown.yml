@@ -19,7 +19,7 @@ reference:
     - expect
     - expect_fail
     - unwrap
-    #- unwrap_fail
+    - unwrap_fail
     - unwrap_option
     #- unwrap_fail_option
     - unwrap_or_default
