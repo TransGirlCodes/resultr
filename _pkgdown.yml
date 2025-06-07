@@ -2,4 +2,13 @@ url: https://transgirlcodes.github.io/resultr/
 template:
   bootstrap: 5
   light-switch: true
+reference:
+- title: Unwrapping values
+  desc: Functions for unwrapping the values contained in `Result` or `Option` objects.
+  contents:
+    - unwrap
+    - unwrap_fail
+    - unwrap_or_default
+    - unwrap_option
+    - unwrap_fail_option
 

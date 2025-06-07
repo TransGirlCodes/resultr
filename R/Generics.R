@@ -15,7 +15,13 @@ expect <- S7::new_generic("expect", c("x", "msg"))
 #' @export
 expect_fail <- S7::new_generic("expect_fail", c("x", "msg"))
 
+
+# Unwrapping values -------------------------------------------------------
+
 #' Get the wrapped value from a `Result` or `Option` object
+#'
+#' @description
+#' `r lifecycle::badge('stable')`
 #'
 #' If the provided object is a `Failure` (in the case of a `Result` input) or
 #' `Nothing` (in the case of an `Option` input), then the function will 'panic'
@@ -26,6 +32,14 @@ expect_fail <- S7::new_generic("expect_fail", c("x", "msg"))
 #'
 #' Instead you are encouraged to handle the "unhappy path" yourself using
 #' `unwrap_or_default` or `unwrap_or_else`.
+#'
+#' @examples
+#' Success(10) |> unwrap()
+#' Success(1:10) |> unwrap()
+#' Success(c(TRUE, TRUE, FALSE)) |> unwrap()
+#' \dontrun{
+#' Failure("Ooopsy") |> unwrap()
+#' }
 #'
 #' @seealso [unwrap_or_default()] [unwrap_or_else()]
 #'
