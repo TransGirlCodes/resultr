@@ -41,7 +41,7 @@ expect_fail <- S7::new_generic("expect_fail", c("x", "msg"))
 #' Failure("Ooopsy") |> unwrap()
 #' }
 #'
-#' @seealso [unwrap_or_default()] [unwrap_or_else()]
+#' @seealso [unwrap_or_default()] [unwrap_option()] [unwrap_or_else()]
 #'
 #' @export
 unwrap <- S7::new_generic("unwrap", "x")
@@ -51,6 +51,9 @@ unwrap_fail <- S7::new_generic("unwrap_fail", "x")
 
 #' Get the wrapped value from a `Result` or `Option` object
 #'
+#' @description
+#' `r lifecycle::badge('stable')`
+#'
 #' If the provided object is a `Failure` (in the case of a `Result` input) or
 #' `Nothing` (in the case of an `Option` input), then the function will 'panic'
 #' and throw an error of class `unwrap_fail_panic`.
@@ -59,13 +62,29 @@ unwrap_fail <- S7::new_generic("unwrap_fail", "x")
 #' specifically want to crash your R program or throw an error condition.
 #'
 #' Instead you are encouraged to handle the "unhappy path" yourself using
-#' `unwrap_or_default` or `unwrap_or_else`.
+#' `unwrap_or_default`, `unwrap_or_else` or `unwrap_option`.
 #'
-#' @seealso [unwrap()] [unwrap_or_else()]
+#' @seealso [unwrap()] [unwrap_option()] [unwrap_or_else()]
 #'
 #' @export
 unwrap_or_default <- S7::new_generic("unwrap_or_default", c("x", "default"))
 
+
+#' Get the wrapped value from a `Result`, wrapped in an `Option` object
+#'
+#' @description
+#' `r lifecycle::badge('stable')`
+#'
+#' This is useful for converting a `Result` to an `Option` i.e. to go from
+#' the possibility of an answer or details of a failure, to the possibility of
+#' an answer or nothing.
+#'
+#' @param x A `Result` object i.e. a `Success()` or `Failure()` value.
+#'
+#' @returns `Some(x)` in the case of a `Success` where `x` is the unwrapped value of the `Success`, or `Nothing()` in the case of a `Failure()`.
+#'
+#' @seealso [unwrap()] [unwrap_or_default()] [unwrap_or_else()]
+#'
 #' @export
 unwrap_option <- S7::new_generic("unwrap_option", "x")
 

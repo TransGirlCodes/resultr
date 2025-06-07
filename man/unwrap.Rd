@@ -29,5 +29,5 @@ Failure("Ooopsy") |> unwrap()
 
 }
 \seealso{
-\code{\link[=unwrap_or_default]{unwrap_or_default()}} \code{\link[=unwrap_or_else]{unwrap_or_else()}}
+\code{\link[=unwrap_or_default]{unwrap_or_default()}} \code{\link[=unwrap_option]{unwrap_option()}} \code{\link[=unwrap_or_else]{unwrap_or_else()}}
 }

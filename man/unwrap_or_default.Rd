@@ -7,17 +7,18 @@
 unwrap_or_default(x, default, ...)
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
+
 If the provided object is a \code{Failure} (in the case of a \code{Result} input) or
 \code{Nothing} (in the case of an \code{Option} input), then the function will 'panic'
 and throw an error of class \code{unwrap_fail_panic}.
-}
-\details{
+
 For this reason, use of this function is not generally advised unless you
 specifically want to crash your R program or throw an error condition.
 
 Instead you are encouraged to handle the "unhappy path" yourself using
-\code{unwrap_or_default} or \code{unwrap_or_else}.
+\code{unwrap_or_default}, \code{unwrap_or_else} or \code{unwrap_option}.
 }
 \seealso{
-\code{\link[=unwrap]{unwrap()}} \code{\link[=unwrap_or_else]{unwrap_or_else()}}
+\code{\link[=unwrap]{unwrap()}} \code{\link[=unwrap_option]{unwrap_option()}} \code{\link[=unwrap_or_else]{unwrap_or_else()}}
 }

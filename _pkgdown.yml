@@ -7,8 +7,8 @@ reference:
   desc: Functions for unwrapping the values contained in `Result` or `Option` objects.
   contents:
     - unwrap
-    - unwrap_fail
+    #- unwrap_fail
     - unwrap_or_default
     - unwrap_option
-    - unwrap_fail_option
+    #- unwrap_fail_option
 
