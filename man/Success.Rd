@@ -13,6 +13,8 @@ Success(value = NULL)
 A \code{Success} \code{S7} object with its \verb{@value} property set to the \code{value} that was passed in the constructor.
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
+
 The \code{Result} class wraps a value in order to provide context to the value.
 Namely, that the value is the result of a successful computation. i.e. a
 function finished without an issue or error.

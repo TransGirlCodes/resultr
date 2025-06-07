@@ -7,6 +7,8 @@
 Result()
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
+
 As an \code{S7} abstract class. This can't actually be constructed, but can be used
 for the purposes of dispatch.
 }

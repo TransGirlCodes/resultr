@@ -3,6 +3,9 @@
 
 #' The abstract parent class of the `Success` and `Failure` classes
 #'
+#' @description
+#' `r lifecycle::badge('stable')`
+#'
 #' As an `S7` abstract class. This can't actually be constructed, but can be used
 #' for the purposes of dispatch.
 #'
@@ -13,6 +16,9 @@ Result <- S7::new_class(
 )
 
 #' A class for representing the value of a successful computation
+#'
+#' @description
+#' `r lifecycle::badge('stable')`
 #'
 #' The `Result` class wraps a value in order to provide context to the value.
 #' Namely, that the value is the result of a successful computation. i.e. a
@@ -45,6 +51,17 @@ Success <- S7::new_class(
   )
 )
 
+#' A class for representing a failed or stopped computation
+#'
+#' @description
+#' `r lifecycle::badge('stable')`
+#'
+#' @examples
+#' Failure("The computation failed")
+#' Failure("Argument x must be numeric")
+#' Failure(rlang::catch_cnd(stop("An error was thrown")))
+#'
+#' @seealso [Success()], which wraps a value to provide the context of a successful computation.
 #' @export
 Failure <- S7::new_class(
   "Failure",
