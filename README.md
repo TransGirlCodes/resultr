@@ -8,6 +8,8 @@
 [![R-CMD-check](https://github.com/TransGirlCodes/resultr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/TransGirlCodes/resultr/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
 coverage](https://codecov.io/gh/TransGirlCodes/resultr/graph/badge.svg)](https://app.codecov.io/gh/TransGirlCodes/resultr)
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
 
 The goal of resultr is to …

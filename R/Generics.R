@@ -15,14 +15,48 @@ expect <- S7::new_generic("expect", c("x", "msg"))
 #' @export
 expect_fail <- S7::new_generic("expect_fail", c("x", "msg"))
 
+#' Get the wrapped value from a `Result` or `Option` object
+#'
+#' If the provided object is a `Failure` (in the case of a `Result` input) or
+#' `Nothing` (in the case of an `Option` input), then the function will 'panic'
+#' and throw an error of class `unwrap_fail_panic`.
+#'
+#' For this reason, use of this function is not generally advised unless you
+#' specifically want to crash your R program or throw an error condition.
+#'
+#' Instead you are encouraged to handle the "unhappy path" yourself using
+#' `unwrap_or_default` or `unwrap_or_else`.
+#'
+#' @seealso [unwrap_or_default()] [unwrap_or_else()]
+#'
 #' @export
 unwrap <- S7::new_generic("unwrap", "x")
 
 #' @export
 unwrap_fail <- S7::new_generic("unwrap_fail", "x")
 
+#' Get the wrapped value from a `Result` or `Option` object
+#'
+#' If the provided object is a `Failure` (in the case of a `Result` input) or
+#' `Nothing` (in the case of an `Option` input), then the function will 'panic'
+#' and throw an error of class `unwrap_fail_panic`.
+#'
+#' For this reason, use of this function is not generally advised unless you
+#' specifically want to crash your R program or throw an error condition.
+#'
+#' Instead you are encouraged to handle the "unhappy path" yourself using
+#' `unwrap_or_default` or `unwrap_or_else`.
+#'
+#' @seealso [unwrap()] [unwrap_or_else()]
+#'
 #' @export
 unwrap_or_default <- S7::new_generic("unwrap_or_default", c("x", "default"))
+
+#' @export
+unwrap_option <- S7::new_generic("unwrap_option", "x")
+
+#' @export
+unwrap_fail_option <- S7::new_generic("unwrap_fail_option", "x")
 
 #' @export
 and_then <- S7::new_generic("and_then", c("x", "fn"))
@@ -66,3 +100,9 @@ S7::method(result, class_result_wrapped_function) <- function(fn, detect_warning
   )
   fn
 }
+
+
+
+
+
+

@@ -145,6 +145,10 @@ S7::method(unwrap, Failure) <- function(x) {
 S7::method(unwrap_or_default, list(Success, S7::class_any)) <- function(x, default) { x@value }
 S7::method(unwrap_or_default, list(Failure, S7::class_any)) <- function(x, default) { default }
 
+#' @include Option.R
+S7::method(unwrap_option, Success) <- function(x) { Some(x@value) }
+S7::method(unwrap_option, Failure) <- function(x) { Nothing() }
+
 S7::method(unwrap_fail, Success) <- function(x) {
   panic(
     "called `unwrap_fail()` on a `Success` value",
