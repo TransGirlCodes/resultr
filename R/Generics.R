@@ -149,6 +149,8 @@ unwrap_fail <- S7::new_generic("unwrap_fail", "x")
 #' @export
 unwrap_or_default <- S7::new_generic("unwrap_or_default", c("x", "default"))
 
+#' @export
+unwrap_or_else <- S7::new_generic("unwrap_or_else", c("x", "fn"))
 
 #' Get the wrapped value from a `Result`, wrapped in an `Option` object
 #'
@@ -169,8 +171,31 @@ unwrap_option <- S7::new_generic("unwrap_option", "x")
 #' @export
 unwrap_fail_option <- S7::new_generic("unwrap_fail_option", "x")
 
+#' Process a success or pass through a failure
+#'
+#' @description
+#' `r lifecycle::badge('stable')`
+#'
+#' Calls `fn()` on the wrapped value of `x` if `x` is a `Success`, or `Some`,
+#' otherwise returns `x` if it is a `Failure` or `Nothing`.
+#'
+#' This function can be used for control flow based on Result values.
+#'
 #' @export
 and_then <- S7::new_generic("and_then", c("x", "fn"))
+
+#' Process a failiure or pass through a success
+#'
+#' @description
+#' `r lifecycle::badge('stable')`
+#'
+#' Calls `fn()` on the wrapped value of `x` if `x` is a `Failure`, or `Nothing`,
+#' otherwise returns `x` if it is a `Success` or `Some`.
+#'
+#' This function can be used for control flow based on Result values.
+#'
+#' @export
+or_else <- S7::new_generic("or_else", c("x", "fn"))
 
 #' @export
 result <- S7::new_generic("result", "fn")

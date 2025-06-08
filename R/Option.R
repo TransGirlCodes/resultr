@@ -55,3 +55,6 @@ S7::method(unwrap, Nothing) <- function(x) {
     class = "unwrap_panic"
   )
 }
+
+S7::method(unwrap_or_default, list(Some, S7::class_any)) <- function(x, default) { x@value }
+S7::method(unwrap_or_default, list(Nothing, S7::class_any)) <- function(x, default) { default }

@@ -162,6 +162,11 @@ S7::method(unwrap, Failure) <- function(x) {
 S7::method(unwrap_or_default, list(Success, S7::class_any)) <- function(x, default) { x@value }
 S7::method(unwrap_or_default, list(Failure, S7::class_any)) <- function(x, default) { default }
 
+S7::method(unwrap_or_else, list(Success, S7::class_function)) <- function(x, fn) { x@value }
+S7::method(unwrap_or_else, list(Failure, S7::class_function)) <- function(x, fn) { x@error |> fn() }
+
+
+
 #' @include Option.R
 S7::method(unwrap_option, Success) <- function(x) { Some(x@value) }
 S7::method(unwrap_option, Failure) <- function(x) { Nothing() }
@@ -189,7 +194,10 @@ S7::method(wrap_in_result, class_warning) <- function(x, fail_on_warning = TRUE,
 
 S7::method(
   and_then,
-  list(Success, S7::class_formula | S7::class_function)
+  list(
+    Success,
+    S7::class_formula | S7::class_function
+  )
 ) <- function(x, fn, detect_warning = TRUE, fail_on_warning = TRUE) {
   and_then(
     x,

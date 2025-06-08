@@ -23,4 +23,9 @@ reference:
     - unwrap_option
     #- unwrap_fail_option
     - unwrap_or_default
+- title: Control flow
+  desc: Functions for
+  contents:
+    - and_then
+    - or_else
 
