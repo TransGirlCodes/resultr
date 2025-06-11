@@ -10,6 +10,8 @@ unwrap_or_default(x, default, ...)
 \item{x}{The object to unwrap.}
 
 \item{default}{The default value to return in the event that \code{x} is a \code{Failure}.}
+
+\item{...}{Additional optional arguments that may be used by specific methods.}
 }
 \value{
 The value wrapped by a \code{Success} or \code{default} in the case of a \code{Failure}.

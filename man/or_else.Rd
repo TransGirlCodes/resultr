@@ -6,6 +6,13 @@
 \usage{
 or_else(x, fn, ...)
 }
+\arguments{
+\item{x}{A \code{Result} or \code{Option} object.}
+
+\item{fn}{A single argument function that accepts the unwrapped value of a \code{Result} or \code{Option}.}
+
+\item{...}{Additional optional arguments that may be used by specific methods.}
+}
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 
@@ -13,4 +20,7 @@ Calls \code{fn()} on the wrapped value of \code{x} if \code{x} is a \code{Failur
 otherwise returns \code{x} if it is a \code{Success} or \code{Some}.
 
 This function can be used for control flow based on Result values.
+}
+\seealso{
+\code{\link[=and_then]{and_then()}}
 }

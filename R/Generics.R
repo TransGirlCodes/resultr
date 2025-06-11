@@ -24,6 +24,7 @@ inspect_fail <- S7::new_generic("inspect_fail", "x", function(x, fn, ...) {
 #'
 #' @param x The object to unwrap.
 #' @param msg The message to be included if a condition is thrown.
+#' @param ... Additional optional arguments that may be used by specific methods.
 #'
 #' @returns The value wrapped by `x` if a condition was not thrown as result of a `Failure` or `Nothing` value.
 #'
@@ -31,7 +32,8 @@ inspect_fail <- S7::new_generic("inspect_fail", "x", function(x, fn, ...) {
 #' Success(10) |> expect("This value should have been successfully computed")
 #' Some("optional string") |> expect("Actually we require the string")
 #' \dontrun{
-#' Failure("Oh no I failed because of bad parameters") |> expect("This value should have been successfully computed")
+#' Failure("Oh no I failed because of bad parameters") |>
+#'   expect("This value should have been successfully computed")
 #' Nothing() |> expect("Actually we require the string")
 #' }
 #'
@@ -52,11 +54,13 @@ expect <- S7::new_generic("expect", c("x", "msg"))
 #'
 #' @param x The object to unwrap.
 #' @param msg The message to be included if a condition is thrown.
+#' @param ... Additional optional arguments that may be used by specific methods.
 #'
 #' @returns The error wrapped by `x` if a condition was not thrown as result of a `Success` value.
 #'
 #' @examples
-#' Failure("Oh no I failed because of bad parameters") |> expect_fail("We have anticipated this failure")
+#' Failure("Oh no I failed because of bad parameters") |>
+#'   expect_fail("We have anticipated this failure")
 #' \dontrun{
 #' Success(10) |> expect_fail("No Mx. Bond, I expect you to fail!")
 #' }
@@ -83,6 +87,7 @@ expect_fail <- S7::new_generic("expect_fail", c("x", "msg"))
 #' `unwrap_or_default` or `unwrap_or_else`.
 #'
 #' @param x The object to unwrap.
+#' @param ... Additional optional arguments that may be used by specific methods.
 #'
 #' @returns The value wrapped by `x` if a condition was not thrown as result of a `Failure` or `Nothing` value.
 #'
@@ -110,13 +115,14 @@ unwrap <- S7::new_generic("unwrap", "x")
 #' `msg`.
 #'
 #' @param x The object to unwrap.
+#' @param ... Additional optional arguments that may be used by specific methods.
 #'
 #' @returns The error wrapped by `x` if a condition was not thrown as result of a `Success` value.
 #'
 #' @examples
-#' Failure("Oh no I failed because of bad parameters") |> expect_fail("We have anticipated this failure")
+#' Failure("Oh no I failed because of bad parameters") |> unwrap_fail()
 #' \dontrun{
-#' Success(10) |> expect_fail("No Mx. Bond, I expect you to fail!")
+#' Success(10) |> unwrap_fail()
 #' }
 #'
 #' @seealso [unwrap()] to unwrap the value of a `Success` instead.
@@ -135,6 +141,7 @@ unwrap_fail <- S7::new_generic("unwrap_fail", "x")
 #'
 #' @param x The object to unwrap.
 #' @param default The default value to return in the event that `x` is a `Failure`.
+#' @param ... Additional optional arguments that may be used by specific methods.
 #'
 #' @returns The value wrapped by a `Success` or `default` in the case of a `Failure`.
 #'
@@ -149,6 +156,25 @@ unwrap_fail <- S7::new_generic("unwrap_fail", "x")
 #' @export
 unwrap_or_default <- S7::new_generic("unwrap_or_default", c("x", "default"))
 
+#' Get the wrapped value from a `Result` or `Option` object
+#'
+#' @description
+#' `r lifecycle::badge('stable')`
+#'
+#' If the provided object is a `Failure` (in the case of a `Result` input) or
+#' `Nothing` (in the case of an `Option` input), then the provided function
+#' `fn` shall be run instead.
+#'
+#' @param x A `Result` or `Option` object.
+#' @param fn A single argument function that accepts a `Failure` or a `Nothing`.
+#' @param ... Additional optional arguments that may be used by specific methods.
+#'
+#' @seealso [unwrap_or_default()]
+#'
+#' @examples
+#' Success(10) |> unwrap_or_else(\(errval) { message("Oh no no I failed") })
+#' Failure("Oh no I failed!") |> unwrap_or_else(\(errval) { message(errval) })
+#'
 #' @export
 unwrap_or_else <- S7::new_generic("unwrap_or_else", c("x", "fn"))
 
@@ -162,6 +188,7 @@ unwrap_or_else <- S7::new_generic("unwrap_or_else", c("x", "fn"))
 #' an answer or nothing.
 #'
 #' @param x A `Result` object i.e. a `Success()` or `Failure()` value.
+#' @param ... Additional optional arguments that may be used by specific methods.
 #'
 #' @returns `Some(x)` in the case of a `Success` where `x` is the unwrapped value of the `Success`, or `Nothing()` in the case of a `Failure()`.
 #'
@@ -181,6 +208,12 @@ unwrap_fail_option <- S7::new_generic("unwrap_fail_option", "x")
 #'
 #' This function can be used for control flow based on Result values.
 #'
+#' @param x A `Result` or `Option` object.
+#' @param fn A single argument function that accepts the unwrapped value of a `Result` or `Option`.
+#' @param ... Additional optional arguments that may be used by specific methods.
+#'
+#' @seealso [or_else()]
+#'
 #' @export
 and_then <- S7::new_generic("and_then", c("x", "fn"))
 
@@ -193,6 +226,12 @@ and_then <- S7::new_generic("and_then", c("x", "fn"))
 #' otherwise returns `x` if it is a `Success` or `Some`.
 #'
 #' This function can be used for control flow based on Result values.
+#'
+#' @param x A `Result` or `Option` object.
+#' @param fn A single argument function that accepts the unwrapped value of a `Result` or `Option`.
+#' @param ... Additional optional arguments that may be used by specific methods.
+#'
+#' @seealso [and_then()]
 #'
 #' @export
 or_else <- S7::new_generic("or_else", c("x", "fn"))

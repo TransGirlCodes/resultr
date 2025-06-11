@@ -8,6 +8,8 @@ unwrap_option(x, ...)
 }
 \arguments{
 \item{x}{A \code{Result} object i.e. a \code{Success()} or \code{Failure()} value.}
+
+\item{...}{Additional optional arguments that may be used by specific methods.}
 }
 \value{
 \code{Some(x)} in the case of a \code{Success} where \code{x} is the unwrapped value of the \code{Success}, or \code{Nothing()} in the case of a \code{Failure()}.

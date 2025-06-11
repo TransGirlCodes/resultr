@@ -8,6 +8,8 @@ unwrap(x, ...)
 }
 \arguments{
 \item{x}{The object to unwrap.}
+
+\item{...}{Additional optional arguments that may be used by specific methods.}
 }
 \value{
 The value wrapped by \code{x} if a condition was not thrown as result of a \code{Failure} or \code{Nothing} value.

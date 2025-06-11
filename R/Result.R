@@ -61,6 +61,8 @@ Success <- S7::new_class(
 #' Failure("Argument x must be numeric")
 #' Failure(rlang::catch_cnd(stop("An error was thrown")))
 #'
+#' @param error An error value to wrap. Could be a numeric error code, a string with a message or a condition object.
+#'
 #' @seealso [Success()], which wraps a value to provide the context of a successful computation.
 #' @export
 Failure <- S7::new_class(
@@ -80,9 +82,38 @@ Failure <- S7::new_class(
   )
 )
 
+#' Check if an object is a subclass of `Result`
+#'
+#' @param x The object to test.
+#'
+#' @returns Either `TRUE` or `FALSE`.
+#'
+#' @examples
+#' Success(10) |> is_result()
+#' Failure("OOps!") |> is_result()
+#' Some(10) |> is_result()
+#' Nothing() |> is_result()
+#'
+#' @seealso [check_is_result()]
+#'
 #' @export
 is_result <- function(x) { S7::S7_inherits(x, class = Result) }
 
+#' Check if an object is a subclass of `Result`
+#'
+#' @param x The object to test.
+#'
+#' @returns Either `TRUE` or `FALSE`.
+#'
+#' @examples
+#' Success(10) |> is_result()
+#' Failure("OOps!") |> is_result()
+#' Some(10) |> is_result()
+#' Nothing() |> is_result()
+#'
+#' @seealso [is_result()]
+#'
+#' @export
 check_is_result <- function(x) {
   if(!is_result(x)) {
     panic("value returned from function must be a Result", class = "result_check_panic")
@@ -91,9 +122,37 @@ check_is_result <- function(x) {
   }
 }
 
+#' Check if an object is a subclass of `Success`
+#'
+#' @param x The object to test.
+#'
+#' @returns Either `TRUE` or `FALSE`.
+#'
+#' @examples
+#' Success(10) |> is_success()
+#' Failure("OOps!") |> is_success()
+#' Some(10) |> is_success()
+#' Nothing() |> is_success()
+#'
+#' @seealso [is_failure()]
+#'
 #' @export
 is_success <- function(x) { S7::S7_inherits(x, class = Success) }
 
+#' Check if an object is a subclass of `Failure`
+#'
+#' @param x The object to test.
+#'
+#' @returns Either `TRUE` or `FALSE`.
+#'
+#' @examples
+#' Success(10) |> is_failure()
+#' Failure("OOps!") |> is_failure()
+#' Some(10) |> is_failure()
+#' Nothing() |> is_failure()
+#'
+#' @seealso [is_success()]
+#'
 #' @export
 is_failure <- function(x) { S7::S7_inherits(x, class = Failure) }
 

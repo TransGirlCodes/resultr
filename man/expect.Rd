@@ -10,6 +10,8 @@ expect(x, msg, ...)
 \item{x}{The object to unwrap.}
 
 \item{msg}{The message to be included if a condition is thrown.}
+
+\item{...}{Additional optional arguments that may be used by specific methods.}
 }
 \value{
 The value wrapped by \code{x} if a condition was not thrown as result of a \code{Failure} or \code{Nothing} value.
@@ -26,7 +28,8 @@ and throw an error of class \code{expect_panic}, with the message body set to
 Success(10) |> expect("This value should have been successfully computed")
 Some("optional string") |> expect("Actually we require the string")
 \dontrun{
-Failure("Oh no I failed because of bad parameters") |> expect("This value should have been successfully computed")
+Failure("Oh no I failed because of bad parameters") |>
+  expect("This value should have been successfully computed")
 Nothing() |> expect("Actually we require the string")
 }
 

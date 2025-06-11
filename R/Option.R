@@ -30,6 +30,11 @@ Some <- S7::new_class(
   )
 )
 
+#' An object to represent no-value or nothing.
+#'
+#' @examples
+#' Nothing()
+#'
 #' @export
 Nothing <- S7::new_class(
   "Nothing",

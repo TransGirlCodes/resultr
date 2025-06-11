@@ -6,6 +6,9 @@
 \usage{
 Failure(error = NULL)
 }
+\arguments{
+\item{error}{An error value to wrap. Could be a numeric error code, a string with a message or a condition object.}
+}
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 }

@@ -10,6 +10,8 @@ expect_fail(x, msg, ...)
 \item{x}{The object to unwrap.}
 
 \item{msg}{The message to be included if a condition is thrown.}
+
+\item{...}{Additional optional arguments that may be used by specific methods.}
 }
 \value{
 The error wrapped by \code{x} if a condition was not thrown as result of a \code{Success} value.
@@ -22,7 +24,8 @@ and throw an error of class \code{expect_fail_panic}, with the message body set 
 \code{msg}.
 }
 \examples{
-Failure("Oh no I failed because of bad parameters") |> expect_fail("We have anticipated this failure")
+Failure("Oh no I failed because of bad parameters") |>
+  expect_fail("We have anticipated this failure")
 \dontrun{
 Success(10) |> expect_fail("No Mx. Bond, I expect you to fail!")
 }
