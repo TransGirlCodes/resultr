@@ -1,9 +1,29 @@
 
+#' Apply a function to a `Result`'s value if it is a success
+#'
+#' @description
+#' `r lifecycle::badge('stable')`
+#'
+#' @param x A `Result` object.
+#' @param fn A function to apply to the wrapped value.
+#' @param ... Additional optional values that may be used by specific methods.
+#' @returns The input `x`.
+#'
 #' @export
 inspect <- S7::new_generic("inspect", "x", function(x, fn, ...) {
   S7::S7_dispatch()
 })
 
+#' Apply a function to a `Result`'s error if it is a failure
+#'
+#' @description
+#' `r lifecycle::badge('stable')`
+#'
+#' @param x A `Result` object.
+#' @param fn A function to apply to the wrapped value.
+#' @param ... Additional optional values that may be used by specific methods.
+#' @returns The input `x`.
+#'
 #' @export
 inspect_fail <- S7::new_generic("inspect_fail", "x", function(x, fn, ...) {
   S7::S7_dispatch()
@@ -192,9 +212,27 @@ unwrap_or_else <- S7::new_generic("unwrap_or_else", c("x", "fn"))
 #'
 #' @returns `Some(x)` in the case of a `Success` where `x` is the unwrapped value of the `Success`, or `Nothing()` in the case of a `Failure()`.
 #'
+#' @seealso [unwrap_fail_option()]
+#'
 #' @export
 unwrap_option <- S7::new_generic("unwrap_option", "x")
 
+#' Get the wrapped error from a `Result`, wrapped in an `Option` object
+#'
+#' @description
+#' `r lifecycle::badge('stable')`
+#'
+#' This is useful for converting a `Result` to an `Option` i.e. to go from
+#' the possibility of an answer or details of a failure, to the possibility of
+#' an answer or nothing.
+#'
+#' @param x A `Result` object i.e. a `Success()` or `Failure()` value.
+#' @param ... Additional optional arguments that may be used by specific methods.
+#'
+#' @returns `Some(x)` in the case of a `Failure` where `x` is the unwrapped value of the `Failure`, or `Nothing()` in the case of a `Success`.
+#'
+#' @seealso [unwrap_option()]
+#'
 #' @export
 unwrap_fail_option <- S7::new_generic("unwrap_fail_option", "x")
 
@@ -236,6 +274,27 @@ and_then <- S7::new_generic("and_then", c("x", "fn"))
 #' @export
 or_else <- S7::new_generic("or_else", c("x", "fn"))
 
+#' Wrap an existing function to return `Result` objects
+#'
+#' Wrap up an existing function so that it returns values wrapped in a `Success`
+#' if it finished computing and returns a value, and returns a `Failure` if a
+#' warning or error condition is intercepted during the functions execution.
+#'
+#' @param fn A function to wrap.
+#' @param ... Additional optional arguments that may be used by individual methods.
+#'
+#' @examples
+#' my_awesome_function <- function(do_the_throw = FALSE) {
+#'     if(do_the_throw) {
+#'         stop("Oh no!")
+#'     } else {
+#'         return(100)
+#'     }
+#' }
+#' safe_awesome <- result(my_awesome_function)
+#' safe_awesome()
+#' safe_awesome(do_the_throw = TRUE)
+#'
 #' @export
 result <- S7::new_generic("result", "fn")
 

@@ -1,4 +1,3 @@
-#' @export
 panic <- function(message, class, ...) {
   rlang::abort(
     message = message,

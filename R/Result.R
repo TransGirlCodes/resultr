@@ -9,6 +9,7 @@
 #' As an `S7` abstract class. This can't actually be constructed, but can be used
 #' for the purposes of dispatch.
 #'
+#' @rdname result-class
 #' @export
 Result <- S7::new_class(
   "Result",
@@ -84,6 +85,9 @@ Failure <- S7::new_class(
 
 #' Check if an object is a subclass of `Result`
 #'
+#' @description
+#' `r lifecycle::badge('stable')`
+#'
 #' @param x The object to test.
 #'
 #' @returns Either `TRUE` or `FALSE`.
@@ -100,6 +104,9 @@ Failure <- S7::new_class(
 is_result <- function(x) { S7::S7_inherits(x, class = Result) }
 
 #' Check if an object is a subclass of `Result`
+#'
+#' @description
+#' `r lifecycle::badge('stable')`
 #'
 #' @param x The object to test.
 #'
@@ -124,6 +131,9 @@ check_is_result <- function(x) {
 
 #' Check if an object is a subclass of `Success`
 #'
+#' @description
+#' `r lifecycle::badge('stable')`
+#'
 #' @param x The object to test.
 #'
 #' @returns Either `TRUE` or `FALSE`.
@@ -141,6 +151,9 @@ is_success <- function(x) { S7::S7_inherits(x, class = Success) }
 
 #' Check if an object is a subclass of `Failure`
 #'
+#' @description
+#' `r lifecycle::badge('stable')`
+#'
 #' @param x The object to test.
 #'
 #' @returns Either `TRUE` or `FALSE`.
@@ -156,12 +169,48 @@ is_success <- function(x) { S7::S7_inherits(x, class = Success) }
 #' @export
 is_failure <- function(x) { S7::S7_inherits(x, class = Failure) }
 
+#' Check if an object is a subclass of `Success` AND a predicate is true
+#'
+#' @description
+#' `r lifecycle::badge('stable')`
+#'
+#' @param x The object to test.
+#' @param fn A single argument predicate function that accepts `x` as its argument.
+#'
+#' @returns Either `TRUE` or `FALSE`.
+#'
+#' @examples
+#' Success(10) |> is_success_and(~ unwrap(.x) == 10)
+#' Failure("OOps!") |> is_success_and(~ unwrap(.x) == 10)
+#' Some(10) |> is_success_and(~ unwrap(.x) == 10)
+#' Nothing() |> is_success_and(~ unwrap(.x) == 10)
+#'
+#' @seealso [is_failure_and()]
+#'
 #' @export
 is_success_and <- function(x, fn) {
   fn <- purrr::as_mapper(fn)
   is_success(x) && fn(x)
 }
 
+#' Check if an object is a subclass of `Failure` AND a predicate is true
+#'
+#' @description
+#' `r lifecycle::badge('stable')`
+#'
+#' @param x The object to test.
+#' @param fn A single argument predicate function that accepts `x` as its argument.
+#'
+#' @returns Either `TRUE` or `FALSE`.
+#'
+#' @examples
+#' Success(10) |> is_failure_and(~ unwrap_fail(.x) == "OOps!")
+#' Failure("OOps!") |> is_failure_and(~ unwrap_fail(.x) == "OOps!")
+#' Some(10) |> is_failure_and(~ unwrap_fail(.x) == "OOps!")
+#' Nothing() |> is_failure_and(~ unwrap_fail(.x) == "OOps!")
+#'
+#' @seealso [is_success_and()]
+#'
 #' @export
 is_failure_and <- function(x, fn) {
   fn <- purrr::as_mapper(fn)
@@ -240,6 +289,28 @@ S7::method(unwrap_fail, Success) <- function(x) {
 
 S7::method(unwrap_fail, Failure) <- function(x) { x@error }
 
+#' Wrap a value in a `Result` object depending on its class.
+#'
+#' This function is an important helper function for the `result` function
+#' wrapper.
+#'
+#' When a wrapped `fn` successfully computes and returns a value, it is wrapped
+#' into a `Result` object according to the following rules.
+#'
+#' A value of any class (i.e. `S7::class_any`) is wrapped in a `Success` by default.
+#' Errors and Warnings (i.e. `S7::class_error | S7::class_warning`) are wrapped in a `Failure` by default
+#' A `Result` is passed through as is - no point wrapping a `Result` in a `Result`.
+#'
+#' These rules are implemented through this function's method dispatch, and so
+#' class authors can provide methods to dictate how their specific class should
+#' be wrapped. However it is expected that the simple rules already defined should
+#' be sufficient for the vast majority of cases.
+#'
+#' @param x The object to be wrapped into a `Result`.
+#' @param ... Additional optional arguments that may be used by individual methods.
+#'
+#' @seealso [result()]
+#'
 #' @include S3_classes.R
 #' @export
 wrap_in_result <- S7::new_generic("wrap_in_result", "x")

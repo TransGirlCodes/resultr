@@ -2,12 +2,12 @@
 % Please edit documentation in R/Option.R
 \name{Nothing}
 \alias{Nothing}
-\title{An object to represent no-value or nothing.}
+\title{A class to represent no-value or nothing.}
 \usage{
 Nothing()
 }
 \description{
-An object to represent no-value or nothing.
+A class to represent no-value or nothing.
 }
 \examples{
 Nothing()

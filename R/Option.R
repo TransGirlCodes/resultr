@@ -12,6 +12,23 @@ Option <- S7::new_class(
   abstract = TRUE
 )
 
+#' An object to represent "some value".
+#'
+#' "Some value" here means a value wrapped in a `Some` object, as opposed to a
+#' `Nothing` object.
+#'
+#' Note R has other means by which an author might represent missing-ness or
+#' ambiguity like `NULL`, `NA`s and 0-length vectors.
+#'
+#' @param value The value that is wrapped by the `Some` object.
+#'
+#' @examples
+#' Some(100)
+#' Some("Some Text")
+#' Some(1:10)
+#' Some(TRUE)
+#' Some(FALSE)
+#'
 #' @export
 Some <- S7::new_class(
   "Some",
@@ -30,7 +47,7 @@ Some <- S7::new_class(
   )
 )
 
-#' An object to represent no-value or nothing.
+#' A class to represent no-value or nothing.
 #'
 #' @examples
 #' Nothing()

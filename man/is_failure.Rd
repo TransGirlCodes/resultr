@@ -13,7 +13,7 @@ is_failure(x)
 Either \code{TRUE} or \code{FALSE}.
 }
 \description{
-Check if an object is a subclass of \code{Failure}
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 }
 \examples{
 Success(10) |> is_failure()
