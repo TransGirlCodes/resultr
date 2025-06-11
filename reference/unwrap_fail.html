@@ -63,6 +63,10 @@ and throw an error of class <code>expect_fail_panic</code>, with the message bod
 <dl><dt id="arg-x">x<a class="anchor" aria-label="anchor" href="#arg-x"></a></dt>
 <dd><p>The object to unwrap.</p></dd>
 
+
+<dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
+<dd><p>Additional optional arguments that may be used by specific methods.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -75,10 +79,10 @@ and throw an error of class <code>expect_fail_panic</code>, with the message bod
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="Failure.html">Failure</a></span><span class="op">(</span><span class="st">"Oh no I failed because of bad parameters"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="expect_fail.html">expect_fail</a></span><span class="op">(</span><span class="st">"We have anticipated this failure"</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="Failure.html">Failure</a></span><span class="op">(</span><span class="st">"Oh no I failed because of bad parameters"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">unwrap_fail</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Oh no I failed because of bad parameters"</span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="Success.html">Success</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="expect_fail.html">expect_fail</a></span><span class="op">(</span><span class="st">"No Mx. Bond, I expect you to fail!"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="Success.html">Success</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">unwrap_fail</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>

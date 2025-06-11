@@ -67,6 +67,10 @@ the provided default value instead.</p>
 <dt id="arg-default">default<a class="anchor" aria-label="anchor" href="#arg-default"></a></dt>
 <dd><p>The default value to return in the event that <code>x</code> is a <code>Failure</code>.</p></dd>
 
+
+<dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
+<dd><p>Additional optional arguments that may be used by specific methods.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -74,7 +78,7 @@ the provided default value instead.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><code>unwrap_or_else()</code></p></div>
+    <div class="dont-index"><p><code><a href="unwrap_or_else.html">unwrap_or_else()</a></code></p></div>
     </div>
 
     <div class="section level2">
@@ -85,7 +89,7 @@ the provided default value instead.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 200</span>
 <span class="r-in"><span><span class="fu">Some</span><span class="op">(</span><span class="fl">50</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">unwrap_or_default</span><span class="op">(</span><span class="fl">200</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 50</span>
-<span class="r-in"><span><span class="fu">Nothing</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">unwrap_or_default</span><span class="op">(</span><span class="fl">200</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="Nothing.html">Nothing</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">unwrap_or_default</span><span class="op">(</span><span class="fl">200</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 200</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
