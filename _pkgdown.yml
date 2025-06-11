@@ -13,6 +13,8 @@ reference:
   desc: The S7 classes implementing "optional" values
   contents:
     - Option
+    #- Some
+    - Nothing
 - title: Unwrapping values
   desc: Functions for unwrapping the values contained in `Result` or `Option` objects
   contents:
@@ -23,9 +25,17 @@ reference:
     - unwrap_option
     #- unwrap_fail_option
     - unwrap_or_default
+    - unwrap_or_else
 - title: Control flow
   desc: Functions for
   contents:
     - and_then
     - or_else
+- title: Utilities
+  desc: Misc helper functions
+  contents:
+    - is_result
+    - check_is_result
+    - is_success
+    - is_failure
 
