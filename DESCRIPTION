@@ -17,6 +17,8 @@ Imports:
     rlang (>= 1.1.0),
     S7
 Suggests: 
+    knitr,
+    rmarkdown,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Collate: 
@@ -27,3 +29,4 @@ Collate:
     'panic.R'
     'resultr-package.R'
 URL: https://transgirlcodes.github.io/resultr/
+VignetteBuilder: knitr

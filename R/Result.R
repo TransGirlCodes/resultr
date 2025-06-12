@@ -329,14 +329,18 @@ S7::method(
     S7::class_formula | S7::class_function
   )
 ) <- function(x, fn, detect_warning = TRUE, fail_on_warning = TRUE) {
-  and_then(
-    x,
-    result(
-      fn,
-      detect_warning = detect_warning,
-      fail_on_warning = fail_on_warning
-    )
-  )
+  if (detect_warning) {
+    rlang::try_fetch(
+      { fn(x@value) },
+      error = identity,
+      warning = identity
+    ) |> wrap_in_result(fail_on_warning = fail_on_warning)
+  } else {
+    rlang::try_fetch(
+      { fn(x@value) },
+      error = identity,
+    ) |> wrap_in_result(fail_on_warning = fail_on_warning)
+  }
 }
 
 S7::method(
