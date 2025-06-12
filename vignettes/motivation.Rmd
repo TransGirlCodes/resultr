@@ -43,7 +43,44 @@ some of the topics below!
 
 ## Ok, so why should I use a result object pattern instead of exceptions then?
 
-Ah well, my argument and motivation for this package is _not_ that people should
-use result objects instead of exceptions, and I'll make no grand assertions as
-to the absolute unquestioned superiority of one way over another. I'm a
-"right tool for the right moment" kind of person
+My motivation for this package is _not_ that people should use result objects
+instead of exceptions, and I'll make no grand assertions as
+to the absolute unquestioned superiority of one way of dealing with errors over
+another. I'm a "right tool for the right moment" kind of person.
+
+People cite all kinds of pro's and con's for using a Result object pattern vs.
+exception patterns, and I won't litigate all of them here, suffice to say that
+both patterns have been around for a long time, but a measured take tends to
+emerge from such discussions which vibes with my "right tools for the right job"
+attitude:
+
+> _**There are exceptions, and then there are predictable failures.**_
+
+In my current industry job, a lot of processes, tools and dashboards are being
+written in R, by people of varying degrees of experience. There are people like
+me with over a decade experience in writing scientific software -
+(in many languages including ones more geared towards systems programming like C/C++)
+and then there are people who are only just beginning with R or who have only
+ever used R.
+
+In this job, I've noticed a lot of coders on a team only ever consider the happy
+path when writing code. Which can lead to a lot of exceptions and a lot of crashes.
+
+And that's ok! Exceptions are by definition, exceptional - occurrences that are
+difficult to predict or anticipate. Our software crashing indicates our software
+needs to change - that we need to get good and improve the code base.
+
+However, there are lots of places in our code where exceptions keep happening,
+because they are not exceptional, but predictable failures:
+
+- A user provided incorrect credentials for a database.
+- A database or service happens to be down for maintenance.
+- The user is asking for a combination of parameters that results in a bad query.
+- The user is trying to run a calculation that isn't applicable to an area of
+  business - a subset of the data.
+
+All of these and more are predictable occurrences that _should_ become gracefully
+handled by our code base as we improve its quality.
+
+Occasionally `try`, `tryCatch` or `rlang::try_fetch` will be used 
+  
