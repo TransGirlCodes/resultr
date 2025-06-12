@@ -49,7 +49,7 @@
 
       <dl><dt>
 
-          <code><a href="Result.html">Result()</a></code>
+          <code><a href="result-class.html">Result()</a></code>
           <span class="badge lifecycle lifecycle-stable">stable</span>
         </dt>
         <dd>The abstract parent class of the <code>Success</code> and <code>Failure</code> classes</dd>
@@ -84,10 +84,16 @@
         <dd>The abstract parent class of the <code>Some</code> and <code>Nothing</code> classes</dd>
       </dl><dl><dt>
 
+          <code><a href="Some.html">Some()</a></code>
+
+        </dt>
+        <dd>An object to represent "some value".</dd>
+      </dl><dl><dt>
+
           <code><a href="Nothing.html">Nothing()</a></code>
 
         </dt>
-        <dd>An object to represent no-value or nothing.</dd>
+        <dd>A class to represent no-value or nothing.</dd>
       </dl></div><div class="section level2">
       <h2 id="unwrapping-values">Unwrapping values<a class="anchor" aria-label="anchor" href="#unwrapping-values"></a></h2>
 
@@ -100,6 +106,18 @@
 
 
       <dl><dt>
+
+          <code><a href="inspect.html">inspect()</a></code>
+          <span class="badge lifecycle lifecycle-stable">stable</span>
+        </dt>
+        <dd>Apply a function to a <code>Result</code>'s value if it is a success</dd>
+      </dl><dl><dt>
+
+          <code><a href="inspect_fail.html">inspect_fail()</a></code>
+          <span class="badge lifecycle lifecycle-stable">stable</span>
+        </dt>
+        <dd>Apply a function to a <code>Result</code>'s error if it is a failure</dd>
+      </dl><dl><dt>
 
           <code><a href="expect.html">expect()</a></code>
           <span class="badge lifecycle lifecycle-stable">stable</span>
@@ -131,6 +149,12 @@
         <dd>Get the wrapped value from a <code>Result</code>, wrapped in an <code>Option</code> object</dd>
       </dl><dl><dt>
 
+          <code><a href="unwrap_fail_option.html">unwrap_fail_option()</a></code>
+          <span class="badge lifecycle lifecycle-stable">stable</span>
+        </dt>
+        <dd>Get the wrapped error from a <code>Result</code>, wrapped in an <code>Option</code> object</dd>
+      </dl><dl><dt>
+
           <code><a href="unwrap_or_default.html">unwrap_or_default()</a></code>
           <span class="badge lifecycle lifecycle-stable">stable</span>
         </dt>
@@ -141,6 +165,29 @@
           <span class="badge lifecycle lifecycle-stable">stable</span>
         </dt>
         <dd>Get the wrapped value from a <code>Result</code> or <code>Option</code> object</dd>
+      </dl></div><div class="section level2">
+      <h2 id="function-wrappers">Function wrappers<a class="anchor" aria-label="anchor" href="#function-wrappers"></a></h2>
+
+      <div class="section-desc"><p>Modify functions to return <code>Result</code> or <code>Option</code> classes.</p></div>
+
+
+    </div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="result.html">result()</a></code>
+
+        </dt>
+        <dd>Wrap an existing function to return <code>Result</code> objects</dd>
+      </dl><dl><dt>
+
+          <code><a href="wrap_in_result.html">wrap_in_result()</a></code>
+
+        </dt>
+        <dd>Wrap a value in a <code>Result</code> object depending on its class.</dd>
       </dl></div><div class="section level2">
       <h2 id="control-flow">Control flow<a class="anchor" aria-label="anchor" href="#control-flow"></a></h2>
 
@@ -178,27 +225,39 @@
       <dl><dt>
 
           <code><a href="is_result.html">is_result()</a></code>
-
+          <span class="badge lifecycle lifecycle-stable">stable</span>
         </dt>
         <dd>Check if an object is a subclass of <code>Result</code></dd>
       </dl><dl><dt>
 
           <code><a href="check_is_result.html">check_is_result()</a></code>
-
+          <span class="badge lifecycle lifecycle-stable">stable</span>
         </dt>
         <dd>Check if an object is a subclass of <code>Result</code></dd>
       </dl><dl><dt>
 
           <code><a href="is_success.html">is_success()</a></code>
-
+          <span class="badge lifecycle lifecycle-stable">stable</span>
         </dt>
         <dd>Check if an object is a subclass of <code>Success</code></dd>
       </dl><dl><dt>
 
-          <code><a href="is_failure.html">is_failure()</a></code>
+          <code><a href="is_success_and.html">is_success_and()</a></code>
+          <span class="badge lifecycle lifecycle-stable">stable</span>
+        </dt>
+        <dd>Check if an object is a subclass of <code>Success</code> AND a predicate is true</dd>
+      </dl><dl><dt>
 
+          <code><a href="is_failure.html">is_failure()</a></code>
+          <span class="badge lifecycle lifecycle-stable">stable</span>
         </dt>
         <dd>Check if an object is a subclass of <code>Failure</code></dd>
+      </dl><dl><dt>
+
+          <code><a href="is_failure_and.html">is_failure_and()</a></code>
+          <span class="badge lifecycle lifecycle-stable">stable</span>
+        </dt>
+        <dd>Check if an object is a subclass of <code>Failure</code> AND a predicate is true</dd>
       </dl></div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
