@@ -5,12 +5,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Motivation for resultr, Results and Option • resultr</title>
+<title>Motivation for resultr • resultr</title>
 <script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Motivation for resultr, Results and Option">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Motivation for resultr">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -33,7 +33,7 @@
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/motivation.html">Motivation for resultr, Results and Option</a></li>
+<li><a class="dropdown-item" href="../articles/motivation.html">Motivation for resultr</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -63,7 +63,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
 
-      <h1>Motivation for resultr, Results and Option</h1>
+      <h1>Motivation for resultr</h1>
             
       
 
@@ -72,9 +72,58 @@
 
     
     
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://transgirlcodes.github.io/resultr/">resultr</a></span><span class="op">)</span></span></code></pre></div>
-  </main>
+<div class="section level2">
+<h2 id="doesent-r-already-have-exceptions-and-try-catch-mechanics">Doesen’t R already have exceptions and <code>try-catch</code>
+mechanics?<a class="anchor" aria-label="anchor" href="#doesent-r-already-have-exceptions-and-try-catch-mechanics"></a>
+</h2>
+<p>Yes!</p>
+<p>R already has a very flexible and useful condition signalling system
+that is the basis for emitting messages, warnings, and errors -
+exceptions that bubble up and either crash the executing program /
+function, or are caught and handled by a matching exception handling
+function.</p>
+<p>This base system was much improved by functionality implemented in
+the <code>rlang</code> package, such as call-stack trimming and making
+it trivial to make rich error messages and custom error/warning
+classes.</p>
+<p>It is beyond the scope of this short article to go into the details
+of these systems. I encourage you to read the documentation, these tools
+have helped me immensely, they’re very good, and I can’t recommend them
+enough. I’ve collected some of the topics below!</p>
+<div class="section level3">
+<h3 id="rlang">rlang<a class="anchor" aria-label="anchor" href="#rlang"></a>
+</h3>
+<ul>
+<li><a href="https://rlang.r-lib.org/reference/topic-error-call.html" class="external-link">Error
+calls</a></li>
+<li><a href="https://rlang.r-lib.org/reference/topic-error-chaining.html" class="external-link">Error
+chaining</a></li>
+<li><a href="https://rlang.r-lib.org/reference/topic-condition-formatting.html" class="external-link">Formatting
+error messages</a></li>
+<li><a href="https://rlang.r-lib.org/reference/topic-condition-customisation.html" class="external-link">Customising
+messages</a></li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="the-advanced-r-book-by-hadley-wickham">The Advanced R Book by Hadley Wickham<a class="anchor" aria-label="anchor" href="#the-advanced-r-book-by-hadley-wickham"></a>
+</h3>
+<ul>
+<li><a href="https://adv-r.hadley.nz/conditions.html" class="external-link">Conditions</a></li>
+</ul>
+</div>
+</div>
+<div class="section level2">
+<h2 id="ok-so-why-should-i-use-a-result-object-pattern-instead-of-exceptions-then">Ok, so why should I use a result object pattern instead of
+exceptions then?<a class="anchor" aria-label="anchor" href="#ok-so-why-should-i-use-a-result-object-pattern-instead-of-exceptions-then"></a>
+</h2>
+<p>Ah well, my argument and motivation for this package is <em>not</em>
+that people should use result objects instead of exceptions, and I’ll
+make no grand assertions as to the absolute unquestioned superiority of
+one way over another. I’m a “right tool for the right moment” kind of
+person</p>
+</div>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+    </nav></aside>
 </div>
 
 
