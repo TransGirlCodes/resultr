@@ -1,5 +1,5 @@
 ---
-title: "Motivation for resultr, Results and Option"
+title: "Motivation for resultr"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{motivation}
@@ -14,6 +14,36 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
-library(resultr)
-```
+## Doesen't R already have exceptions and `try-catch` mechanics?
+
+Yes!
+
+R already has a very flexible and useful condition signalling system that
+is the basis for emitting messages, warnings, and errors - exceptions that
+bubble up and either crash the executing program / function, or are caught and
+handled by a matching exception handling function.
+
+This base system was much improved by functionality implemented in the `rlang`
+package, such as call-stack trimming and making it trivial to make rich error
+messages and custom error/warning classes.
+
+It is beyond the scope of this short article to go into the details of these
+systems. I encourage you to read the documentation, these tools have helped me
+immensely, they're very good, and I can't recommend them enough. I've collected
+some of the topics below!
+
+### rlang
+- [Error calls](https://rlang.r-lib.org/reference/topic-error-call.html)
+- [Error chaining](https://rlang.r-lib.org/reference/topic-error-chaining.html)
+- [Formatting error messages](https://rlang.r-lib.org/reference/topic-condition-formatting.html)
+- [Customising messages](https://rlang.r-lib.org/reference/topic-condition-customisation.html)
+
+### The Advanced R Book by Hadley Wickham
+- [Conditions](https://adv-r.hadley.nz/conditions.html)
+
+## Ok, so why should I use a result object pattern instead of exceptions then?
+
+Ah well, my argument and motivation for this package is _not_ that people should
+use result objects instead of exceptions, and I'll make no grand assertions as
+to the absolute unquestioned superiority of one way over another. I'm a
+"right tool for the right moment" kind of person
