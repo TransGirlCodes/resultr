@@ -34,6 +34,7 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="../articles/motivation.html">Motivation for resultr</a></li>
+    <li><a class="dropdown-item" href="../articles/using_results.html">Using Results for risky computations</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -157,8 +158,20 @@ area of business - a subset of the data.</li>
 <p>All of these and more are predictable occurrences that
 <em>should</em> become gracefully handled by our code base as we improve
 its quality.</p>
-<p>Occasionally <code>try</code>, <code>tryCatch</code> or
-<code><a href="https://rlang.r-lib.org/reference/try_fetch.html" class="external-link">rlang::try_fetch</a></code> will be used</p>
+<p>Indeed you can actually simply handle these cases using the exception
+catching and condition mechanisms that R already has-</p>
+<blockquote>
+<p><em>“So what’s the problem, ’Brina?”</em></p>
+</blockquote>
+<ul>
+<li>yes ok, you can just catch the common predictable exceptions, AND
+the exceptional ones… but… well… in my own experience it just doesn’t
+happen. People in my team don’t do it consistently, I don’t do it
+consistently. And whilst yes, this might be a skill issue to a certain
+extent, this feels like an uphill battle in many ways. It’s not always
+obvious from a function’s definition or docs if it could throw or where
+and why it might throw.</li>
+</ul>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
