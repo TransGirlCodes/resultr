@@ -1,0 +1,65 @@
+---
+title: "Using Results for risky computations"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{using_results}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(resultr)
+```
+
+# Introduction
+
+The `Result` classes defined in this package can make code more readable and
+less error-prone as if a function returns a `Result` object, users of said
+function are encouraged to consider unhappy paths after all, they might get a
+`Failure`. Using `Result`s can abstract away the need
+for nested if statements and tryCatch blocks, and can facilitate writing composable
+pipelines of functions that will either end with a success object or a failure object.
+
+# Functions that return `Result`
+
+Writing a function to return a `Result` signals to users that the function may
+well fail for a non-exceptional reason:
+
+```{r}
+# A function that might fail
+risky_get_stuff_from_server <- function(good = TRUE) {
+  if (good) Success(42) else Failure("whoops, couldn't connect!")
+}
+
+# Downstream users are now encouraged to inspect the result for success
+risky_result <- risky_get_stuff_from_server(good = TRUE)
+if (is_success(risky_result)) {
+  print(paste0("The answer: ", value(risky_result)))
+}
+#> [1] "The answer: 42"
+
+risky_result <- risky_get_stuff_from_server(good = FALSE)
+if (is_failure(risky_result)) {
+  cat(paste0("Failed because ", value(risky_result)))
+}
+#> Failed because cannot find good answer
+```
+
+# Wrapping functions
+
+Even if a function returns a Result, it may call other functions that may raise exceptions
+rather than return `Result` objects, and so it's often desired to wrap a function to
+ensure errors are returned as `Failure`s and successfully computed outputs are
+returned as `Success`es.
+
+```{r}
+
+```
+

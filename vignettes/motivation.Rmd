@@ -82,5 +82,16 @@ because they are not exceptional, but predictable failures:
 All of these and more are predictable occurrences that _should_ become gracefully
 handled by our code base as we improve its quality.
 
-Occasionally `try`, `tryCatch` or `rlang::try_fetch` will be used 
-  
+Indeed you can actually simply handle these cases using the exception catching
+and condition mechanisms that R already has- 
+
+> _"So what's the problem, 'Brina?"_
+
+- yes ok, you can just catch the common predictable exceptions, AND the exceptional ones...
+but... well... in my own experience it just doesn't happen.
+People in my team don't do it consistently, I don't do it consistently.
+And whilst yes, this might be a skill issue to a certain extent, this feels like
+an uphill battle in many ways. It's not always obvious from a function's definition or
+docs if it could throw or where and why it might throw.
+
+
