@@ -41,13 +41,13 @@ risky_get_stuff_from_server <- function(good = TRUE) {
 # Downstream users are now encouraged to inspect the result for success
 risky_result <- risky_get_stuff_from_server(good = TRUE)
 if (is_success(risky_result)) {
-  print(paste0("The answer: ", value(risky_result)))
+  print(paste0("The answer: ", unwrap(risky_result)))
 }
 #> [1] "The answer: 42"
 
 risky_result <- risky_get_stuff_from_server(good = FALSE)
 if (is_failure(risky_result)) {
-  cat(paste0("Failed because ", value(risky_result)))
+  cat(paste0("Failed because ", unwrap_fail(risky_result)))
 }
 #> Failed because cannot find good answer
 ```
